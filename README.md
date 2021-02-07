@@ -1,8 +1,8 @@
 # azure_terraform
 
-Test Azure Terraform Repository - DO NOT USE
+**Test Azure Terraform Repository - DO NOT USE**
 
-For tesing purposes only!
+In Developement -- for tesing purposes only!
 
 ## Terraform Azure Static website with Content Deleiver Network (CDN) Endpoint
 
@@ -73,10 +73,6 @@ A custom domain and its subdomain can be associated with only a single endpoint 
 
 Well-defined naming and metadata tagging conventions help to quickly locate and manage resources. These conventions also help associate cloud usage costs with business teams via chargeback and show back accounting mechanisms.
 
-> ### Resource naming
-
-An effective naming convention assembles resource names by using important resource information as parts of a resource's name. For example, using these [recommended naming conventions](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#example-names), a public IP resource for a production SharePoint workload is named like this: `pip-sharepoint-prod-westus-001`.
-
 > ### Metadata tags
 
 When applying metadata tags to the cloud resources, you can include information about those assets that couldn't be included in the resource name. You can use that information to perform more sophisticated filtering and reporting on resources. This information can be used by IT or business teams to find resources or generate reports about resource usage and billing.
@@ -101,9 +97,8 @@ End Date of the Project|Date when this application, workload, or service is plan
 > This module allows you to manage the above metadata tags directly or as a variable using `variables.tf`. All Azure resources which support tagging can be tagged by specifying key-values in argument `tags`. Tag `ResourceName` is added automatically to all resources.
 
 ```hcl
-module "static-website-cdn" {
-  source  = "kumarvna/static-website-cdn/azurerm"
-  version = "2.1.0"
+module "azure_static_website_cdn" {
+  source                       = "./azure_static_website_cdn"
 
   # ... omitted
 
@@ -173,10 +168,6 @@ module "static-website-cdn" {
 | storage\_account\_name | The name of the storage account. |
 | storage\_primary\_access\_key | The primary access key for the storage account. |
 | storage\_primary\_connection\_string | The primary connection string for the storage account. |
-
-## Resource Graph
-
-![Resource Graph](graph.png)
 
 ## Other resources
 
