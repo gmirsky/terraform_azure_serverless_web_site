@@ -1,10 +1,8 @@
-# azure_terraform
+# Terraform Azure Static website with Content Deleiver Network (CDN) Endpoint
 
 **Test Azure Terraform Repository - DO NOT USE**
 
 In Developement -- for tesing purposes only!
-
-## Terraform Azure Static website with Content Deleiver Network (CDN) Endpoint
 
 Terraform script to create an Azure storage account and enable the static website also creates optional CDN service for the static website.
 
@@ -12,7 +10,7 @@ To change the storage account kind, set the argument `account_kind` to the appro
 
 > Note: *Static Website can only be created when the `account_kind` is set to `StorageV2`.*
 
-These types of resources are supported
+These types of terraform resources are utilized:
 
 * [Storage Account](https://www.terraform.io/docs/providers/azurerm/r/storage_account.html)
 * [Static Website](https://www.terraform.io/docs/providers/azurerm/r/storage_account.html#static_website)
