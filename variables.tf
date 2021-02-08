@@ -26,12 +26,12 @@ variable "custom_tags" {
 
 variable "application_code_name" {
   type        = string
-  description = "application code or abbreviation to be used in resource names"
+  description = "Application code anme or abbreviation to be used in resource names"
 }
 
 variable "cidr_first_two_octets" {
   type        = string
-  description = "Fist two octets of the network CIDR"
+  description = "Fist two octets of the network CIDR, for example 10.11.X.X"
   default     = "10.0"
 }
 

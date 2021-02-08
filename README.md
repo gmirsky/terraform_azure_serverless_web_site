@@ -32,19 +32,30 @@ module "azure_region" {
 }
 
 module "azure_static_website_cdn" {
-  source                       = "./azure_static_website_cdn"
-  create_resource_group        = var.create_resource_group
-  resource_group_name          = azurecaf_name.rg_this.result
-  location                     = module.azure_region.location
-  storage_account_name         = azurecaf_name.st_this.result
-  account_kind                 = "StorageV2" # BlockBlobStorage
-  static_website_source_folder = var.static_website_source_folder
-  index_path                   = var.index_path
-  custom_404_path              = var.custom_404_path
-  enable_cdn_profile           = var.enable_cdn_profile
+  access_tier                  = "Hot"
+  account_kind                 = "StorageV2"
+  allowed_headers              = []
+  allowed_methods              = []
+  allowed_origins              = []
+  assign_identity              = true
   cdn_profile_name             = var.cdn_profile_name
   cdn_sku_profile              = var.cdn_sku_profile
+  create_resource_group        = var.create_resource_group
+  custom_404_path              = var.custom_404_path
   custom_domain_name           = var.custom_domain_name
+  enable_cdn_profile           = var.enable_cdn_profile
+  enable_https_traffic         = true
+  enable_static_website        = true
+  exposed_headers              = []
+  friendly_name                = var.friendly_name
+  index_path                   = var.index_path
+  location                     = module.azure_region.location
+  max_age_in_seconds           = 172800
+  resource_group_name          = azurecaf_name.rg_this.result
+  sku                          = "Standard_GRS"
+  source                       = "./azure_static_website_cdn"
+  static_website_source_folder = var.static_website_source_folder
+  storage_account_name         = azurecaf_name.st_this.result
   tags                         = module.azure_user_tags.tags
 }
 ```
@@ -140,7 +151,6 @@ module "azure_static_website_cdn" {
 | create\_resource\_group | Whether to create resource group and use it for all networking resources | `bool` | `false` | no |
 | custom\_404\_path | path from your repo root to your custom 404 page | `string` | `"404.html"` | no |
 | custom\_domain\_name | The custom domain name to use for your website | `string` | `null` | no |
-| friendly\_name | The friendly name of the custom domain in Azure Portal|`string` | `""` | no |
 | enable\_cdn\_profile | Controls the creation of CDN profile and endpoint for static website. Possible values are `true` or `false` | `bool` | `false` | no |
 | enable\_https\_traffic | Configure the storage account to accept requests from secure connections only. Possible values are `true` or `false` | `bool` | `true` | no |
 | enable\_static\_website | Controls if static website to be enabled on the storage account. Possible values are `true` or `false` | `bool` | `true` | no |
